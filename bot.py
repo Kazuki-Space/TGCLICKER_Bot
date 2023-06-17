@@ -45,7 +45,7 @@ async def send_help(message: types.Message):
 
 @dp.message_handler(text="Начать")
 async def start_play(message: types.Message):
-    await bot.send_message(message.from_user.id, text=f'У вас: {settings.point} монет', reply_markup=farm_kb)
+    await bot.send_message(message.from_user.id, text=f'У вас: {config.point} монет', reply_markup=farm_kb)
 
 
 @dp.message_handler(text="Магазин")
@@ -55,27 +55,27 @@ async def start_play(message: types.Message):
 
 @dp.callback_query_handler(text=["2p/c", "5p/c", "10p/c", "20p/c", "50p/c", "100p/c", "back"])
 async def add_point(callback: CallbackQuery):
-    if callback.data == DoublePoint_btn.callback_data and settings.point >= 50:
+    if callback.data == DoublePoint_btn.callback_data and config.point >= 50:
         config.Boughtpoint += 2
         config.point -= 50
         await callback.message.edit_text('куплено!')
-    if callback.data == FivePoint_btn.callback_data and settings.point >= 1250:
+    if callback.data == FivePoint_btn.callback_data and config.point >= 1250:
         config.Boughtpoint += 5
         config.point -= 1250
         await callback.message.edit_text('куплено!')
-    if callback.data == TenPoint_btn.callback_data and settings.point >= 2500:
+    if callback.data == TenPoint_btn.callback_data and config.point >= 2500:
         config.Boughtpoint += 10
         callback.point -= 2500
         await callback.message.edit_text('куплено!')
-    if callback.data == TwentyPoint_btn.callback_data and settings.point >= 4500:
+    if callback.data == TwentyPoint_btn.callback_data and config.point >= 4500:
         config.Boughtpoint += 20
         config.point -= 4500
         await callback.message.edit_text('куплено!')
-    if callback.data == FiftyPoint_btn.callback_data and settings.point >= 7900:
+    if callback.data == FiftyPoint_btn.callback_data and config.point >= 7900:
         config.Boughtpoint += 50
         config.point -= 7900
         await callback.message.edit_text('куплено!')
-    if callback.data == OneHundredPoint_btn.callback_data and settings.point >= 11300:
+    if callback.data == OneHundredPoint_btn.callback_data and config.point >= 11300:
         config.Boughtpoint += 100
         config.point -= 11300
         await callback.message.edit_text('куплено!')
